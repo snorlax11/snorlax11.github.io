@@ -3,9 +3,32 @@
 <body>
   
   <script>
+    var r = 255;
+    var g = 255;
+    var b = 255;
     function buttonPress(){
       document.body.style.backgroundColor="rgb(207, 227, 219)"
     }
+    
+    function sliderChange(){
+      document.body.style.backgroundColor = ("rgb("+r+","+g+","+b+")") 
+    }
+    
+    function sliderChangeR(val){
+      r = val;
+      sliderChange();
+    }
+    
+    function sliderChangeG(val){
+      g = val;
+      sliderChange();
+    }
+    function sliderChangeB(val){
+      b = val;
+      sliderChange();
+    }
+    
+  </script>
     
   </script>
 <h1> the michael rosen game! </h1>
@@ -18,8 +41,9 @@
   <a href= "index.html"> go back to home page </a>
   <button onclick = "buttonPress()">buy a telly</button>
   <br>
-  <button>
-  
+  <input type = "range" id="slider" min="0" max ="255" onchange = "sliderChangeR(this.value)"/> <br>
+  <input type = "range" id="slider" min="0" max ="255" onchange = "sliderChangeG(this.value)"/> <br>
+  <input type = "range" id="slider" min="0" max ="255" onchange = "sliderChangeB(this.value)"/> <br>
   <p>
  </body>
  
