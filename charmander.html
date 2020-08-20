@@ -13,10 +13,10 @@
       DOWN: 40,
       
       isDown: function(keyCode){
-        return this._pressed[keyCode] = true;
+        return this._pressed[keyCode];
       },
       
-      onKeydown: function(event){
+      onKeydown: function(event) {
         this._pressed[event.keyCode] = true;
       },
       
