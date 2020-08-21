@@ -17,7 +17,7 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "snor.png", 10, 120, "image");
+    myGamePiece = new component(30, 30, "red", 10, 120);
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
@@ -39,7 +39,6 @@ var myGameArea = {
 }
 
 function component(width, height, color, x, y, type) {
-    
     this.type = type;
     this.score = 0;
     this.width = width;
@@ -51,22 +50,12 @@ function component(width, height, color, x, y, type) {
     this.gravity = 0;
     this.gravitySpeed = 0;
     this.update = function() {
-       if (type == "image") {
-    this.image = new Image();
-    this.image.src = color;
-  }   
         ctx = myGameArea.context;
-        //if (this.type == "text") {
-        //    ctx.font = this.width + " " + this.height;
-        //    ctx.fillStyle = color;
-        //    ctx.fillText(this.text, this.x, this.y);
-        if (this.type == "image") {
-            ctx.drawImage(this.image,
-            this.x,
-            this.y,
-            this.width, this.height);
-    } else {
-    //    } else {
+        if (this.type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
+        } else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -116,7 +105,7 @@ function updateGameArea() {
         maxHeight = 200;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
         minGap = 50;
-        maxGap = 20 0;
+        maxGap = 200;
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
         myObstacles.push(new component(10, height, "green", x, 0));
         myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
@@ -143,4 +132,4 @@ function accelerate(n) {
 <br>
 <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
 <p>Use the ACCELERATE button to stay in the air</p>
-<p>How long can you stay alive?3</p>
+<p>How long can you stay alive?</p>  
